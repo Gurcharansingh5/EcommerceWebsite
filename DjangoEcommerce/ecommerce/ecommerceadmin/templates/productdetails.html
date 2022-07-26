@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'adminindex' %}"><button>Add New Item</button></a>
+
+<div class="table-responsive">
+    <table class="datatable table table-hover table-center mb-0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Product Image</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>action</th>
+
+    </tr>
+    </thead>
+{% for i in productdata %}
+        <tbody>
+        <tr>
+            <td>{{i.id}}</td>
+            <td><img alt="User Image" src="{{i.productimage.url}}" width="200" height="200"></td>
+            <td>{{i.productname}}</td>
+            <td>{{i.productprice}}</td>
+            <td>{{i.status}}<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+  <label class="form-check-label" for="mySwitch">Dark Mode</label>
+</div></td>
+            <td>{{i.post_views}}</td>
+
+
+            <td><a href="{% url 'productdelete' i.id %}"><button class="btn btn-info">delete</button></a></td>
+            <td><a href="{% url 'productupdate' i.id %}"><button class="btn btn-primary">Update</button></a></td>
+        </tr>
+        </tbody>
+{% endfor %}
+        </table>
+</div>
+{% endblock %}

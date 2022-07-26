@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" action="{% url 'authlogin' %}">
+    {% csrf_token %}
+enter your username :
+<input type="text" name="usernames">
+<br>
+<br>
+enter your password :
+<input type="password" name="passwords">
+<br>
+<button type="submit">submit</button>
+
+    </form>
+{% endblock %}

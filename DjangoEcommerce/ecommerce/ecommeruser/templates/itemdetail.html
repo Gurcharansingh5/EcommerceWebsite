@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<img src="{{item.productimage.url}}" height="200" width="200">
+<h1>{{item.productname}}</h1>
+<p>A T-shirt, or tee, is a style of fabric shirt named after the T shape of its body and sleeves. Traditionally, it has short sleeves and a round neckline, known as a crew neck, which lacks a collar. T-shirts are generally made of a stretchy, light, and inexpensive fabric and are easy to clean.</p>
+Price : {{item.productprice}}
+
+
+{% if user.is_active %}
+<a href="{% url 'rating' item.id %}">Give Feedbck</a>
+<button><a href="{% url 'purchase' item.id %}">Buy Now</a></button>
+{% else %}
+<button><a href="{% url 'authlogin' %}">Login Please</a></button>
+{% endif %}
+{% endblock %}

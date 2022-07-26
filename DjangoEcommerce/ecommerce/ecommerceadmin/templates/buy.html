@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<img src="{{productid.productimage.url}}" height="200" width="200">
+<h1>{{productid.productname}}</h1>
+
+Price : {{productid.productprice}}
+<h2><center>Book Now</center></h2>
+<form action="{% url 'purchase' id %}" method="post">
+    {% csrf_token %}
+    name : <input type="text" name="name" required class="form-control">
+    phone : <input type="number" name="phone" required class="form-control">
+    adress : <textarea name="address" required class="form-control"></textarea>
+    <button type="submit">submit</button>
+</form>
+{% endblock %}
